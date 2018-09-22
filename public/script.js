@@ -22,7 +22,7 @@ function getKey(){
   //var apikey = 'ipmzVNJ5EFoqsx6ApJVr3wFOGzfrZHMf'
   var town = input.value;
   var request = new XMLHttpRequest();
-    request.open("GET","//dataservice.accuweather.com/locations/v1/search?q=" + town + "&apikey=kSSGF3G6vq9MTC5fbJtCRHWL2baCt4Ni",true);
+    request.open("GET","//dataservice.accuweather.com/locations/v1/search?q=" + town + "&apikey=HdVvghAuB0Q5fBN4PFGjOh0eRFDVGYUN",true);
     request.send();
     request.addEventListener('load', function(){
     var data = JSON.parse(this.responseText);
@@ -38,7 +38,7 @@ function getInfo(){
   var myDiv = document.getElementById('info');
 
   var newrequest = new XMLHttpRequest();
-    newrequest.open("GET","//dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=kSSGF3G6vq9MTC5fbJtCRHWL2baCt4Ni&language=en-us&details=full&metric=false",true);
+    newrequest.open("GET","//dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=HdVvghAuB0Q5fBN4PFGjOh0eRFDVGYUN&language=en-us&details=full&metric=false",true);
     newrequest.send();
     newrequest.addEventListener('load', function(){
      var data = JSON.parse(this.responseText);
@@ -65,7 +65,7 @@ function getMoreInfo(){
   var myDiv = document.getElementById('info');
 
   var newrequest = new XMLHttpRequest();
-    newrequest.open("GET","//dataservice.accuweather.com/currentconditions/v1/"+ locationKey + "?apikey=kSSGF3G6vq9MTC5fbJtCRHWL2baCt4Ni",true);
+    newrequest.open("GET","//dataservice.accuweather.com/currentconditions/v1/"+ locationKey + "?apikey=Y3xxwT3OyD9PiZVTnxoAPN6ERofEeyps",true);
     newrequest.send();
     newrequest.addEventListener('load', function(){
      var data = JSON.parse(this.responseText);
