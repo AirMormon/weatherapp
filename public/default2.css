@@ -1,0 +1,38 @@
+
+#submit {
+
+position: absolute;
+top: 30%;
+left: 60%;
+
+}
+div {
+  position: absolute;
+  top: 29%;
+  left: 30%;
+
+}
+
+#weather {
+
+position: absolute;
+top: 60%;
+left: 35%;
+
+}
+
+#warning {
+
+position: absolute;
+top: 70%;
+left: 35%;
+
+}
+
+#actualTemp {
+
+position: absolute;
+top: 80%;
+left: 35%;
+
+}
