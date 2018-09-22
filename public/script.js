@@ -19,7 +19,7 @@ myDiv.style.webkitAnimationPlayState = "paused";
 function getKey(){
   var myDiv = document.getElementById('info');
   myDiv.innerHTML = "";
-  var apikey = 'ipmzVNJ5EFoqsx6ApJVr3wFOGzfrZHMf'
+  //var apikey = 'ipmzVNJ5EFoqsx6ApJVr3wFOGzfrZHMf'
   var town = input.value;
   var request = new XMLHttpRequest();
     request.open("GET","//dataservice.accuweather.com/locations/v1/search?q=" + town + "&apikey=kSSGF3G6vq9MTC5fbJtCRHWL2baCt4Ni",true);
@@ -27,7 +27,6 @@ function getKey(){
     request.addEventListener('load', function(){
     var data = JSON.parse(this.responseText);
      locationKey = data[0].Key
-     console.log(locationKey);
 
 getInfo();
 getMoreInfo();
@@ -43,11 +42,11 @@ function getInfo(){
     newrequest.send();
     newrequest.addEventListener('load', function(){
      var data = JSON.parse(this.responseText);
-     console.log(data);
+
      var min = data.DailyForecasts[0].Temperature.Minimum.Value
      var max = data.DailyForecasts[0].Temperature.Maximum.Value
      var headline = data.Headline.Text;
-     console.log(headline)
+
 var paraOne = document.createElement("P");
 var paraTwo = document.createElement("P");                       // Create a <p> element
 var a = document.createTextNode("Today's weather will be a high of " + max + " and a low of " + min);      // Create a text node
@@ -66,7 +65,7 @@ function getMoreInfo(){
   var myDiv = document.getElementById('info');
 
   var newrequest = new XMLHttpRequest();
-    newrequest.open("GET","//dataservice.accuweather.com/currentconditions/v1/"+ locationKey + "?apikey=GaZbRCIWKmcxVboHfjB18omnS7G46nm7",true);
+    newrequest.open("GET","//dataservice.accuweather.com/currentconditions/v1/"+ locationKey + "?apikey=kSSGF3G6vq9MTC5fbJtCRHWL2baCt4Ni",true);
     newrequest.send();
     newrequest.addEventListener('load', function(){
      var data = JSON.parse(this.responseText);
