@@ -1,15 +1,28 @@
-var subButton = document.getElementById('submit')
-var input = document.getElementById('input')
-subButton.addEventListener('click', getKey)
 
-input.setAttribute( "autocomplete", "off" )
-var locationKey;
 
+
+stopanimation();
+
+  var subButton = document.getElementById('submit')
+  var input = document.getElementById('input')
+  subButton.addEventListener('click', getKey)
+
+
+  input.setAttribute( "autocomplete", "off" )
+  var locationKey;
+  function stopanimation(){
+    var myDiv = document.getElementById('info');
+
+myDiv.style.webkitAnimationPlayState = "paused";
+
+}
 function getKey(){
+  var myDiv = document.getElementById('info');
+  myDiv.innerHTML = "";
   var apikey = 'ipmzVNJ5EFoqsx6ApJVr3wFOGzfrZHMf'
   var town = input.value;
   var request = new XMLHttpRequest();
-    request.open("GET","//dataservice.accuweather.com/locations/v1/search?q=" + town + "&apikey=GaZbRCIWKmcxVboHfjB18omnS7G46nm7",true);
+    request.open("GET","//dataservice.accuweather.com/locations/v1/search?q=" + town + "&apikey=kSSGF3G6vq9MTC5fbJtCRHWL2baCt4Ni",true);
     request.send();
     request.addEventListener('load', function(){
     var data = JSON.parse(this.responseText);
@@ -23,10 +36,10 @@ getMoreInfo();
 }
 
 function getInfo(){
-
+  var myDiv = document.getElementById('info');
 
   var newrequest = new XMLHttpRequest();
-    newrequest.open("GET","//dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=GaZbRCIWKmcxVboHfjB18omnS7G46nm7&language=en-us&details=full&metric=false",true);
+    newrequest.open("GET","//dataservice.accuweather.com/forecasts/v1/daily/1day/" + locationKey + "?apikey=kSSGF3G6vq9MTC5fbJtCRHWL2baCt4Ni&language=en-us&details=full&metric=false",true);
     newrequest.send();
     newrequest.addEventListener('load', function(){
      var data = JSON.parse(this.responseText);
@@ -35,24 +48,34 @@ function getInfo(){
      var max = data.DailyForecasts[0].Temperature.Maximum.Value
      var headline = data.Headline.Text;
      console.log(headline)
-document.getElementById('weather').innerHTML = "Today's weather will be a high of " + max + " and a low of " + min;
-document.getElementById('warning').innerHTML = headline;
+var paraOne = document.createElement("P");
+var paraTwo = document.createElement("P");                       // Create a <p> element
+var a = document.createTextNode("Today's weather will be a high of " + max + " and a low of " + min);      // Create a text node
+var b = document.createTextNode(headline);
+paraOne.appendChild(a);
+paraTwo.appendChild(b);
+
+myDiv.appendChild(paraOne);
+myDiv.appendChild(paraTwo);
 
 
 })
 
 }
 function getMoreInfo(){
+  var myDiv = document.getElementById('info');
+
   var newrequest = new XMLHttpRequest();
     newrequest.open("GET","//dataservice.accuweather.com/currentconditions/v1/"+ locationKey + "?apikey=GaZbRCIWKmcxVboHfjB18omnS7G46nm7",true);
     newrequest.send();
     newrequest.addEventListener('load', function(){
      var data = JSON.parse(this.responseText);
      var currTemp = data[0].Temperature.Imperial.Value
-     document.getElementById('actualTemp').innerHTML = "Current Temperature is " + currTemp + " Degrees F";
-
-
-
-
+var myDiv = document.getElementById('info');
+var paraOne = document.createElement("P");
+var a = document.createTextNode("Current Temperature is " + currTemp + " Degrees F");      // Create a text node
+paraOne.appendChild(a)
+myDiv.appendChild(paraOne)
+myDiv.style.webkitAnimationPlayState = "running";
 })
 }
