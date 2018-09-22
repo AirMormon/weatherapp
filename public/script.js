@@ -65,7 +65,7 @@ function getMoreInfo(){
   var myDiv = document.getElementById('info');
 
   var newrequest = new XMLHttpRequest();
-    newrequest.open("GET","//dataservice.accuweather.com/currentconditions/v1/"+ locationKey + "?apikey=Y3xxwT3OyD9PiZVTnxoAPN6ERofEeyps",true);
+    newrequest.open("GET","//dataservice.accuweather.com/currentconditions/v1/"+ locationKey + "?apikey=HdVvghAuB0Q5fBN4PFGjOh0eRFDVGYUN",true);
     newrequest.send();
     newrequest.addEventListener('load', function(){
      var data = JSON.parse(this.responseText);
