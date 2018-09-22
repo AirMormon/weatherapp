@@ -5,8 +5,6 @@ subButton.addEventListener('click', getKey)
 input.setAttribute( "autocomplete", "off" )
 var locationKey;
 
-//http://dataservice.accuweather.com/forecasts/v1/daily/1day/337524?apikey=ipmzVNJ5EFoqsx6ApJVr3wFOGzfrZHMf&language=en-us&details=full&metric=false HTTP/1.1
-
 function getKey(){
   var apikey = 'ipmzVNJ5EFoqsx6ApJVr3wFOGzfrZHMf'
   var town = input.value;
